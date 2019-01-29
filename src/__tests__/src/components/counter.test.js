@@ -1,14 +1,20 @@
 import React from "react";
 import renderer from "react-test-renderer";
 
-import Counter from "../../../src/components/counter/counter.js";
+import Counter from "../../../components/counter/counter";
 
 describe("<Count />", () => {
-  it("clicker is alive", () => {
+  it("count is alive", () => {
     let component = shallow(<Counter />);
     expect(component.find("span").exists()).toBeTruthy();
   });
+
+  it("renders correctly", () => {
+    const tree = renderer.create(<Counter />).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });
+
 describe("<Count />", () => {
   it("up clicker is alive", () => {
     let component = shallow(<Counter />);
